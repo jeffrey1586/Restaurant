@@ -16,6 +16,7 @@ public class MenuActivity extends AppCompatActivity implements MenuItemsRequest.
 
     ArrayList<MenuItem> allItems;
 
+    // click listener for the list view
     private class SelectItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -32,6 +33,7 @@ public class MenuActivity extends AppCompatActivity implements MenuItemsRequest.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // connect click listener to list view
         ListView lv = findViewById(R.id.menu_lv);
         lv.setOnItemClickListener(new MenuActivity.SelectItemClickListener());
 

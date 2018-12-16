@@ -23,6 +23,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String category = (String) parent.getItemAtPosition(position);
 
+            // put the selected category in the intent and go to menuActivity
             Intent intent = new Intent(CategoriesActivity.this, MenuActivity.class);
             intent.putExtra("category", category);
             startActivity(intent);
@@ -34,6 +35,7 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
 
+        // connect the click listener to list view
         ListView lv = findViewById(R.id.categories_lv);
         lv.setOnItemClickListener(new ListItemClickListener());
 
@@ -56,6 +58,4 @@ public class CategoriesActivity extends AppCompatActivity implements CategoriesR
     public void gotCategoriesError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
-
 }

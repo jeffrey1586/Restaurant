@@ -45,15 +45,18 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
                     (R.layout.menu_rows, parent, false);
         }
 
+        // get the image and text views
         RequestQueue queue = Volley.newRequestQueue(currContext);
         final ImageView imageUrl = convertView.findViewById(R.id.imageUrl);
         TextView rowTitle = convertView.findViewById(R.id.rowTitle);
         TextView rowPrice =convertView.findViewById(R.id.rowPrice);
 
+        // get menu information that needs to be filled in by adapter
         String image = listItems.get(position).getImageUrl();
         String title = listItems.get(position).getName();
         Long price = listItems.get(position).getPrice();
 
+        // set the image
         ImageRequest imageRequest = new ImageRequest(image, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
@@ -69,6 +72,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
         });
         queue.add(imageRequest);
 
+        // set the title and price
         rowTitle.setText(title);
         rowPrice.setText("$ " + String.valueOf(price));
 

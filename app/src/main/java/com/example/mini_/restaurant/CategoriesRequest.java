@@ -30,6 +30,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
         void gotCategoriesError(String message);
     }
 
+    // give error message back to TheActivity
     @Override
     public void onErrorResponse(VolleyError error) {
         String errorMessage = error.getMessage();
@@ -45,6 +46,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
             e.printStackTrace();
         }
 
+        // give categories back to TheActivity
         for (int i = 0; i < categoriesArray.length(); i++) {
             try {
 
@@ -56,6 +58,7 @@ public class CategoriesRequest implements Response.Listener<JSONObject>, Respons
         theActivity.gotCategories(array);
     }
 
+    // get categories from url
     public void getCategories(Callback activity) {
         RequestQueue queue = Volley.newRequestQueue(context);
 

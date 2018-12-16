@@ -32,20 +32,24 @@ public class MenuItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_item);
 
+        // get the selected item from the intent
         RequestQueue queue = Volley.newRequestQueue(this);
         Intent intent = getIntent();
         MenuItem selectedItem = (MenuItem) intent.getSerializableExtra("selected_item");
 
+        // get the information from selected item
         String title = selectedItem.getName();
         String image = selectedItem.getImageUrl();
         String description = selectedItem.getDescription();
         Long price = selectedItem.getPrice();
 
+        // get the id's from textViews and imageView
         TextView itemTitle = findViewById(R.id.itemTitle);
         itemImage = findViewById(R.id.itemImage);
         TextView itemDescription = findViewById(R.id.itemContent);
         TextView itemPrice = findViewById(R.id.itemPrice);
 
+        // set the image
         ImageRequest imageRequest = new ImageRequest(image, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
@@ -61,6 +65,7 @@ public class MenuItemActivity extends AppCompatActivity {
         });
         queue.add(imageRequest);
 
+        // set the rest of the dish its information
         itemTitle.setText(title);
         itemDescription.setText(description);
         itemPrice.setText("$ " + String.valueOf(price));

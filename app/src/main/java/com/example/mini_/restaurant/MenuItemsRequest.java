@@ -33,6 +33,7 @@ public class MenuItemsRequest implements Response.Listener<JSONObject>, Response
         void gotMenuItemsError(String errorMessage);
     }
 
+    // give error message to TheActivity
     @Override
     public void onErrorResponse(VolleyError error) {
         String errorMessage = error.getMessage();
@@ -48,6 +49,7 @@ public class MenuItemsRequest implements Response.Listener<JSONObject>, Response
             e.printStackTrace();
         }
 
+        // get the dish information and make a new Menu item
         for (int i = 0; i < itemsArray.length(); i++) {
             try {
                 JSONObject itemInfo = itemsArray.getJSONObject(i);
@@ -66,6 +68,7 @@ public class MenuItemsRequest implements Response.Listener<JSONObject>, Response
         theActivity.gotMenuItems(array);
     }
 
+    // get the menu data from the url
     public void getMenuItems(Callback activity, String category) {
         RequestQueue queue = Volley.newRequestQueue(context);
 
