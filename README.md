@@ -1,6 +1,6 @@
 # Restaurant
 
-Jeffery Chong, 11304669.</br>
+Jeffrey Chong, 11304669.</br>
 App Studio, week 6.</br>
 
 Android users can find recipes for appetizers and entrees in this app.</br>
